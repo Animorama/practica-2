@@ -16,6 +16,7 @@ public class EnemySeePatrol : MonoBehaviour
     void Update()
     {
         // if WallDetected() then Flip()
+        Move();
     }
 
     private void Move()
