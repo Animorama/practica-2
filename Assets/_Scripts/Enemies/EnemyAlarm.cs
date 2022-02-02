@@ -5,8 +5,18 @@ using UnityEngine;
 
 public class EnemyAlarm : MonoBehaviour
 {
-    
     SpriteRenderer _alarmRenderer;
+
+    private void OnEnable()
+    {
+        VisionDetector.OnPlayerDetected += PlayerDetected;
+        VisionDetector.OnPlayerHidden += PlayerLeft;
+    }
+    private void OnDisable()
+    {
+        VisionDetector.OnPlayerDetected -= PlayerDetected;
+        VisionDetector.OnPlayerHidden -= PlayerLeft;
+    }
     public void PlayerDetected()
     {
         ChangeColor(Color.red);
