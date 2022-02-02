@@ -11,11 +11,13 @@ public class EnemyAlarm : MonoBehaviour
     {
         VisionDetector.OnPlayerDetected += PlayerDetected;
         VisionDetector.OnPlayerHidden += PlayerLeft;
+        HearingDetector.OnPlayerDetected += PlayerDetected;
+        HearingDetector.OnPlayerHidden += PlayerLeft;
     }
     private void OnDisable()
     {
-        VisionDetector.OnPlayerDetected -= PlayerDetected;
-        VisionDetector.OnPlayerHidden -= PlayerLeft;
+        HearingDetector.OnPlayerDetected -= PlayerDetected;
+        HearingDetector.OnPlayerHidden -= PlayerLeft;
     }
     public void PlayerDetected()
     {

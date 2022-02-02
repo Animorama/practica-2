@@ -48,11 +48,19 @@ public class VisionDetector : MonoBehaviour
     {
         if (IsInRange() && IsInAngle() && !IsBlockedView())
         {
-            OnPlayerDetected?.Invoke();
+            if (!_playerInView)
+            {
+                OnPlayerDetected?.Invoke();
+                _playerInView = true;
+            }
         }
         else
         {
-            OnPlayerHidden?.Invoke();
+            if (_playerInView)
+            {
+                OnPlayerHidden?.Invoke();
+                _playerInView = false;
+            }
         }
     }
 
