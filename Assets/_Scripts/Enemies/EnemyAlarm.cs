@@ -16,6 +16,8 @@ public class EnemyAlarm : MonoBehaviour
     }
     private void OnDisable()
     {
+        VisionDetector.OnPlayerDetected -= PlayerDetected;
+        VisionDetector.OnPlayerHidden -= PlayerLeft;
         HearingDetector.OnPlayerDetected -= PlayerDetected;
         HearingDetector.OnPlayerHidden -= PlayerLeft;
     }
@@ -36,4 +38,12 @@ public class EnemyAlarm : MonoBehaviour
 
         _alarmRenderer.color = color;
     }
+
+    //Dejo esto aquí para plantear si podemos pasar parametros para que solo se ponga rojo un enemy a la vez.
+
+    //public void IncreaseScore(int value)
+    //{
+    //    Score += value;
+    //    OnScoreChanged?.Invoke(Score);
+    //}
 }

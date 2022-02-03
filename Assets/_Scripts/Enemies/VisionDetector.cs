@@ -17,6 +17,7 @@ public class VisionDetector : MonoBehaviour
 
     public static Action OnPlayerDetected;
     public static Action OnPlayerHidden;
+    //public static Action<int> OnPlayerDetected;
     private bool _playerInView;
 
     private void OnDrawGizmos()
