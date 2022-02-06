@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IHear: IDetect
 {
+    float SoundThreshold { get; }
 
+    bool IsMakingNoise();
 }
