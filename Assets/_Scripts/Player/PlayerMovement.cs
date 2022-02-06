@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        _soundTransmitter.EmitNoise(_rigidbody);
+   
     }
 
     private void Move()
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         if (_isMoving)
         {
             LookAt((Vector2)transform.position + direction);
-            //_soundTransmitter.EmitNoise(_rigidbody);
+            _soundTransmitter.EmitNoise(_rigidbody);
         }
         else
         {
