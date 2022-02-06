@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HearingDetector : MonoBehaviour
 {
-    private PlayerMovement _target;
+    private Transform _target;
 
     [SerializeField]
     private float _range = 3.0f;
@@ -26,7 +26,7 @@ public class HearingDetector : MonoBehaviour
 
     private void Awake()
     {
-        _target = GameObject.FindObjectOfType<PlayerMovement>();
+        _target = GameObject.FindObjectOfType<PlayerIdentifier>().transform;
     }
 
     // Start is called before the first frame update
@@ -64,6 +64,6 @@ public class HearingDetector : MonoBehaviour
 
     private bool IsMakingNoise()
     {
-        return _soundThreshold < _target.Noise;
+        return _soundThreshold < _target.GetComponent<SoundTransmitter>().Noise;
     }
 }

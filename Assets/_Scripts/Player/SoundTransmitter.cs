@@ -13,6 +13,6 @@ public class SoundTransmitter : MonoBehaviour, IMakeNoise
 
     public void EmitNoise(Rigidbody2D _rigidBody)
     {
-        _noise = _rigidbody.velocity.magnitude;
+        _noise = _rigidBody.velocity.magnitude;
     }
 }
