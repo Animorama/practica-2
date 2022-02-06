@@ -15,8 +15,8 @@ public class VisionDetector : MonoBehaviour
     [SerializeField]
     private LayerMask WhatIsNotTransparent;
 
-    public static Action OnPlayerDetected;
-    public static Action OnPlayerHidden;
+    public static Action<GameObject> OnPlayerDetected;
+    public static Action<GameObject> OnPlayerHidden;
     //public static Action<int> OnPlayerDetected;
     private bool _playerInView;
 
@@ -51,7 +51,7 @@ public class VisionDetector : MonoBehaviour
         {
             if (!_playerInView)
             {
-                OnPlayerDetected?.Invoke();
+                OnPlayerDetected?.Invoke(this.gameObject);
                 _playerInView = true;
             }
         }
@@ -59,7 +59,7 @@ public class VisionDetector : MonoBehaviour
         {
             if (_playerInView)
             {
-                OnPlayerHidden?.Invoke();
+                OnPlayerHidden?.Invoke(this.gameObject);
                 _playerInView = false;
             }
         }

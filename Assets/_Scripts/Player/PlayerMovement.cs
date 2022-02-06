@@ -3,26 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour, IMakeNoise
+public class PlayerMovement : MonoBehaviour
 {
 
     public bool IsMoving => _isMoving;
-
-    public float Noise => _noise;
-    private float _noise;
 
     [SerializeField]
     private float Speed = 5;
 
     private bool _isMoving;
+
+    //Components
     PlayerInput _input;
     Rigidbody2D _rigidbody;
+    SoundTransmitter _soundTransmitter;
    
     // Start is called before the first frame update
     void Start()
     {
         _input = GetComponent<PlayerInput>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _soundTransmitter = GetComponent<SoundTransmitter>();
     }
 
     // Update is called once per frame
@@ -47,7 +48,7 @@ public class PlayerMovement : MonoBehaviour, IMakeNoise
         if (_isMoving)
         {
             LookAt((Vector2)transform.position + direction);
-            EmitNoise();
+            _soundTransmitter.EmitNoise();
         }
         else
         {
@@ -63,10 +64,5 @@ public class PlayerMovement : MonoBehaviour, IMakeNoise
         Vector3 relative = transform.InverseTransformPoint(targetPosition);
         angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
         transform.Rotate(0, 0, -angle);
-    }
-
-    void EmitNoise()
-    {
-        _noise = _rigidbody.velocity.magnitude;
     }
 }

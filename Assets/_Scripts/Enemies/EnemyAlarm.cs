@@ -21,20 +21,26 @@ public class EnemyAlarm : MonoBehaviour
         HearingDetector.OnPlayerDetected -= PlayerDetected;
         HearingDetector.OnPlayerHidden -= PlayerLeft;
     }
-    public void PlayerDetected()
+
+    public void PlayerDetected(GameObject _enemy)
     {
-        ChangeColor(Color.red);
+        ChangeColor(Color.red, _enemy);
     }
 
-    public void PlayerLeft()
+    public void PlayerLeft(GameObject _enemy)
     {
-        ChangeColor(new Color(0,0,0,0));
+        ChangeColor(new Color(0,0,0,0), _enemy);
     }
 
-    private void ChangeColor(Color color)
+    private void ChangeColor(Color color, GameObject _enemy)
     {
-        if (_alarmRenderer == null)
-            _alarmRenderer=GetComponent<SpriteRenderer>();
+        //if (_alarmRenderer == null)
+        //{
+        //    _alarmRenderer = _enemy.GetComponentInChildren<SpriteRenderer>();
+        //    _alarmRenderer = _enemy.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        //}
+
+        _alarmRenderer = _enemy.transform.GetChild(0).GetComponent<SpriteRenderer>();
 
         _alarmRenderer.color = color;
     }
