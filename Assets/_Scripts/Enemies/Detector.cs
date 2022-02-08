@@ -33,4 +33,14 @@ public class Detector : MonoBehaviour, IDetect
         float distance = Vector2.Distance(_target.position, transform.position);
         return distance < _range;
     }
+
+    protected void PlayerDetected()
+    {
+        OnPlayerDetected?.Invoke();
+    }
+
+    protected void PlayerHidden()
+    {
+        OnPlayerHidden?.Invoke();
+    }
 }

@@ -38,7 +38,7 @@ public class VisionDetector : Detector, ISee
         {
             if (!_playerInView)
             {
-                OnPlayerDetected?.Invoke();
+                PlayerDetected();
                 _playerInView = true;
             }
         }
@@ -46,13 +46,11 @@ public class VisionDetector : Detector, ISee
         {
             if (_playerInView)
             {
-                OnPlayerHidden?.Invoke();
+                PlayerHidden();
                 _playerInView = false;
             }
         }
     }
-
-    
 
     public bool IsInAngle()
     {
@@ -73,10 +71,5 @@ public class VisionDetector : Detector, ISee
         RaycastHit2D hit = Physics2D.Raycast(transform.position, _playerDirection, Range, WhatIsNotTransparent);
 
         return hit.transform != Target.transform;
-    }
-
-    void PlayerDetected()
-    {
-
     }
 }

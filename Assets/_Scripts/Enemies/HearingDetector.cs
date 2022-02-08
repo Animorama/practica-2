@@ -23,7 +23,7 @@ public class HearingDetector : Detector, IHear
         {
             if (!_playerInView)
             {
-                OnPlayerDetected?.Invoke();
+                PlayerDetected();
                 _playerInView = true;
             }
         }
@@ -31,7 +31,7 @@ public class HearingDetector : Detector, IHear
         {
             if (_playerInView)
             {
-                OnPlayerHidden?.Invoke();
+                PlayerHidden();
                 _playerInView = false;
             }
         }
