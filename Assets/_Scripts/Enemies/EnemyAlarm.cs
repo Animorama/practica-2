@@ -9,17 +9,13 @@ public class EnemyAlarm : MonoBehaviour
 
     private void OnEnable()
     {
-        GetComponentInParent<VisionDetector>().OnPlayerDetected += PlayerDetected;
-        GetComponentInParent<VisionDetector>().OnPlayerHidden += PlayerLeft;
-        GetComponentInParent<HearingDetector>().OnPlayerDetected += PlayerDetected;
-        GetComponentInParent<HearingDetector>().OnPlayerHidden += PlayerLeft;
+        GetComponentInParent<IDetect>().OnPlayerDetected += PlayerDetected;
+        GetComponentInParent<IDetect>().OnPlayerHidden += PlayerLeft;
     }
     private void OnDisable()
     {
-        GetComponentInParent<VisionDetector>().OnPlayerDetected -= PlayerDetected;
-        GetComponentInParent<VisionDetector>().OnPlayerHidden -= PlayerLeft;
-        GetComponentInParent<HearingDetector>().OnPlayerDetected -= PlayerDetected;
-        GetComponentInParent<HearingDetector>().OnPlayerHidden -= PlayerLeft;
+        GetComponentInParent<IDetect>().OnPlayerDetected -= PlayerDetected;
+        GetComponentInParent<IDetect>().OnPlayerHidden -= PlayerLeft;
     }
 
     public void PlayerDetected()

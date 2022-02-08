@@ -13,13 +13,6 @@ public class EnemySeePatrol : MonoBehaviour
     [SerializeField]
     private LayerMask WhatIsWall;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -39,9 +32,7 @@ public class EnemySeePatrol : MonoBehaviour
     private bool WallDetected()
     {
         RaycastHit2D hit = Physics2D.Raycast(DetectionPoint.position, transform.right, Distance, WhatIsWall);
-
         return hit.collider != null;
-
     }
 
     private void Flip()
