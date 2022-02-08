@@ -16,11 +16,11 @@ public class HearingDetector : MonoBehaviour, IHear
     [SerializeField]
     private float _soundThreshold = 45f;
 
-    Action<GameObject> IDetect.OnPlayerDetected => OnPlayerDetected;
-    Action<GameObject> IDetect.OnPlayerHidden => OnPlayerHidden;
+    Action IDetect.OnPlayerDetected => OnPlayerDetected;
+    Action IDetect.OnPlayerHidden => OnPlayerHidden;
 
-    public static Action<GameObject> OnPlayerDetected;
-    public static Action<GameObject> OnPlayerHidden;
+    public  Action OnPlayerDetected;
+    public  Action OnPlayerHidden;
     //public static Action<int> OnPlayerDetected;
     private bool _playerInView;
 
@@ -47,7 +47,7 @@ public class HearingDetector : MonoBehaviour, IHear
         {
             if (!_playerInView)
             {
-                OnPlayerDetected?.Invoke(this.gameObject);
+                OnPlayerDetected?.Invoke();
                 _playerInView = true;
             }
         }
@@ -55,7 +55,7 @@ public class HearingDetector : MonoBehaviour, IHear
         {
             if (_playerInView)
             {
-                OnPlayerHidden?.Invoke(this.gameObject);
+                OnPlayerHidden?.Invoke();
                 _playerInView = false;
             }
         }

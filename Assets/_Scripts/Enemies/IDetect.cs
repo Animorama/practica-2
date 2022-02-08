@@ -8,8 +8,8 @@ public interface IDetect
     Transform Target { get; }
     float Range { get; }
 
-    Action<GameObject> OnPlayerDetected { get; }
-    Action<GameObject> OnPlayerHidden { get; }
+    Action OnPlayerDetected { get; }
+    Action OnPlayerHidden { get; }
 
     bool IsInRange();
 }
